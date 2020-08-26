@@ -57,6 +57,7 @@ export async function refreshSession(url: string): Promise<Session> {
     const videoId: string = url.split('/').pop() ?? process.exit(ERROR_CODE.INVALID_VIDEO_GUID);
 
     const browser: puppeteer.Browser = await puppeteer.launch({
+        timeout: 90000,
         executablePath: getPuppeteerChromiumPath(),
         headless: false,            // NEVER TRUE OR IT DOES NOT WORK
         userDataDir: chromeCacheFolder,
